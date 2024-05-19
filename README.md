@@ -6,15 +6,15 @@ Dorota Harasimiuk - sekretarz<br />
 Marcel Tutak - zastępca<br /><br />
 ![kraina](https://github.com/obarowskij/AiSD/assets/146991219/70d9dfba-e964-468b-bb6d-59a82b36d572)
 
-<h2>Odpalenie projektu</h2>
+<h1>Wystartowanie projektu</h1>
 
-<h3> Krok 1.</h3>
+<h2> Krok 1.</h2>
 <p> pobranie paczki requirements</p>
 <pre><code>
  pip install -r requirements.txt
 </code></pre> 
 
-<h3> Krok 2.</h3>
+<h2> Krok 2.</h2>
 <p>Migracje</p>
 <pre><code>
  python manage.py makemigrations
@@ -23,18 +23,18 @@ Marcel Tutak - zastępca<br /><br />
  python manage.py migrate
 </code></pre>
 
-<h3> Krok 3.</h3>
+<h2> Krok 3.</h2>
 <p>Uruchomienie aplikacji </p>
 <pre><code>
  python manage.py runserver
 </code></pre>
 Serwer uruchomi się domyślnie pod adresem http://127.0.0.1:8000
 
-<h3>Uruchomienie Testów</h3>
+<h2>Uruchomienie Testów</h2>
 <pre><code>
  pytest
 </code></pre>
-<h2> Dokumentacja</h2>
+<h1> Dokumentacja</h1>
  <table>
   <tr>
     <th>L.p</th>
