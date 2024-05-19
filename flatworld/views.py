@@ -338,11 +338,12 @@ class FenceView(APIView):
             if "fence" in request.GET:
                 world_points = adventure.world_points
                 hull_points = adventure.hull_points
-                factory = factory.factory
-                neighbor_of_all_point = fence.fence_neighbors
-                fence_cost = calculate_cost(
-                    world_points, factory, hull_points, neighbor_of_all_point
+                pairs = adventure.bearers
+                neighbors = fence.fence_neighbors
+                cost = calculate_cost(
+                    hull_points, world_points, pairs, neighbors
                 )
+                return JsonResponse({"cost": cost})
 
             else:
                 if not inhabitants.bearers or not factory.factory:
