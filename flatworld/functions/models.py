@@ -63,3 +63,44 @@ class Guard:
 
     def set_patrol_day(self, day):
         self.patrol_day = day
+        
+class Node:
+    def __init__(self,name):
+        self.name = name
+
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __lt__(self, other):
+        return self.name < other.name
+    
+    def __hash__(self):
+        return hash(self.name)
+
+class Edge:
+    def __init__(self,froom,to,cost,flow):
+        self.froom = froom
+        self.to = to
+        self.cost = cost
+        self.flow = flow
+
+    def __str__(self):
+        return f'{self.froom.name} {self.to.name} {self.cost} {self.flow}'
+    
+    def delete_edge(self):
+        self.cost = 99999 
+    
+class Graf:
+    def __init__(self):
+        self.Nodes = []
+        self.Edges = []
+        self.max_value = 0
+
+
+    def add_node(self,Node):
+        self.Nodes.append(Node)
+
+
+    def add_edge(self,Edge):
+        self.Edges.append(Edge)
+        self.max_value += Edge.flow

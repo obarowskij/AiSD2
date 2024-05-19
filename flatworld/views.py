@@ -338,7 +338,7 @@ class FenceView(APIView):
             if "fence" in request.GET:
                 world_points = adventure.world_points
                 hull_points = adventure.hull_points
-                pairs = adventure.bearers
+                pairs = inhabitants.bearers
                 neighbors = fence.fence_neighbors
                 cost = calculate_cost(
                     hull_points, world_points, pairs, neighbors
