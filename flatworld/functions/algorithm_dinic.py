@@ -120,9 +120,10 @@ def calculate_distance(x, y):
 
 def calculate_cost(hull_points, world_points, pairs, neighbors):
     distances = []
+    hull_points.pop()
     graph = Graf()
     graph.add_node(Node('factory'))
-    for i in range(len(world_points)):
+    for i in range(1,len(world_points)+1):
         graph.add_node(Node(str(i)))
     for elem in neighbors:
         graph.add_edge(Edge(graph.Nodes[elem[0]], graph.Nodes[elem[1]], elem[2], 99999))
@@ -131,16 +132,10 @@ def calculate_cost(hull_points, world_points, pairs, neighbors):
             distances.append(ceil(calculate_distance(hull_points[i], hull_points[i+1])))
     except IndexError:
         distances.append(ceil(calculate_distance(hull_points[i], hull_points[0])))
-    
     cost = 0
     for i in range(len(hull_points)):
         index = world_points.index(hull_points[i])
-        distance = dinic(graph, graph.Nodes[0], graph.Nodes[index+1])
+        index += 1
+        distance = dinic(graph, graph.Nodes[0], graph.Nodes[index])
         cost += (distance * distances[i])/pairs
     return cost
-
-neighbors = [[0, 16, 29], [0, 3, 65], [0, 8, 65], [0, 17, 92], [16, 10, 149], [16, 8, 83], [16, 3, 82], [16, 11, 137], [3, 17, 108], [3, 11, 137], [3, 15, 120], [11, 4, 142], [11, 12, 140], [11, 10, 102], [11, 15, 179], [15, 17, 201], [15, 2, 124], [15, 14, 57], [15, 12, 125], [4, 1, 81], [4, 12, 100], [4, 10, 213], [4, 6, 63], [4, 13, 80], [12, 13, 77], [12, 5, 30], [12, 14, 117], [14, 2, 109], [14, 9, 76], [14, 7, 71], [14, 5, 122], [6, 13, 67], [6, 1, 22], [13, 7, 157], [13, 5, 56], [13, 1, 86], [5, 7, 118]]
-hull_points = [[-187, 65], [-149, 144], [-114, 184], [136, 118], [168, 71], [102, -148], [-185, -176]]
-world_points = [[-185, -176], [-114, 184], [57, 44], [-111, -142], [-142, -44], [-172, -158], [-187, 65], [168, 71], [-149, 144], [102, -148], [20, -88], [-112, -42], [-172, -91], [-117, 75], [-60, 72], [126, -1], [136, 118]]
-pairs = 5
-print(calculate_cost(hull_points, world_points, pairs, neighbors))
