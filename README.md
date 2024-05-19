@@ -17,9 +17,6 @@ Marcel Tutak - zastępca<br /><br />
 <h2> Krok 2.</h2>
 <p>Migracje</p>
 <pre><code>
- python manage.py makemigrations
-</code></pre>
-<pre><code>
  python manage.py migrate
 </code></pre>
 
