@@ -1,8 +1,9 @@
 
 # Zespół nr: 1
 Skład zespołu wraz z funkcjami:<br />
-Jakub Obarowski – przywódca<br />
+
 Dorota Harasimiuk - sekretarz<br />
+Jakub Obarowski – przywódca<br />
 Marcel Tutak - zastępca<br /><br />
 ![kraina](https://github.com/obarowskij/AiSD/assets/146991219/70d9dfba-e964-468b-bb6d-59a82b36d572)
 
