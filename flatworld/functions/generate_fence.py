@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import io
 import networkx as nx
 from collections import deque
+import matplotlib
+matplotlib.use('TkAgg')
 
 
 def calculate_distance(point1, point2):

@@ -1,4 +1,13 @@
-from .models import Adventure, Song, Code, Factory, Fence, Inhabitant, Guard
+from .models import (
+    Adventure,
+    Song,
+    Code,
+    Factory,
+    Fence,
+    Inhabitant,
+    Guard,
+    Day,
+)
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
@@ -12,6 +21,10 @@ import os
 import time
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+from rest_framework import status
+from rest_framework.exceptions import APIException
+from django.core import serializers
+
 
 from .functions.algorithm_graham import calculate_hull
 from .functions.factory import generate_factory
@@ -21,6 +34,7 @@ from .functions.generate_song import generate_song
 from .functions.algorithm_dinic import calculate_cost
 from .functions.algorithm_rabinkarp import rabinkarp
 from .functions.algorithm_huffman import code_song
+from .functions.algorithm_guards import generate_flat_schedule
 
 
 class IndexView(TemplateView):
@@ -69,7 +83,7 @@ class ResetView(APIView):
                 adventure.fence.set([])
 
             adventure.delete()
-            return Response({"message": "Adventure has been reset."})
+            return Response({"message": "Przygoda została zresetowana."})
         except Adventure.DoesNotExist:
             return Response({"message": "No adventure to reset."})
 
@@ -288,11 +302,11 @@ class BearersView(APIView):
     def post(self, request):
         inputPoints = request.data.get("inputPoints")
         if not inputPoints:
-            return Response({"error": "inputPoints is required"}, status=400)
+            raise Response({"error": "inputPoints is required"}, status=400)
         try:
             inputPoints = int(inputPoints)
         except ValueError:
-            return Response(
+            raise Response(
                 {"error": "inputPoints must be an integer"}, status=400
             )
         adventure = Adventure.objects.get(id=1)
@@ -373,6 +387,66 @@ class FenceView(APIView):
 class GuardsView(APIView):
     def get(self, request):
         try:
-            return render(request, "flatworld/guards.html")
+            return render(
+                request,
+                "flatworld/guards.html",
+                {
+                    "steps": Guard.objects.values_list('steps', flat=True).first(),
+                    "days": Day.objects.all(),
+                },
+            )
         except Adventure.DoesNotExist:
             return render(request, "flatworld/error.html")
+
+    def post(self, request):
+        adventure = Adventure.objects.get(id=1)
+        guards, created = Guard.objects.get_or_create(
+            id=1, adventure=adventure
+        )
+        inhabitants, created = Inhabitant.objects.get_or_create(
+            id=1, adventure=adventure
+        )
+        inputPoints = request.data.get("inputPoints")
+        if not inputPoints:
+            raise Response(
+                {"error": "inputPoints is required"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        try:
+            inputPoints = int(inputPoints)
+        except ValueError:
+            raise Response(
+                {"error": "inputPoints must be an integer"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        guard_data, images_data = generate_flat_schedule(
+            int(len(inhabitants.inhabitants)),
+            int(len(adventure.hull_points) - 1),
+            int(inputPoints),
+            adventure.hull_points,
+        )
+        guards.steps = inputPoints
+        guards.save()
+        last_day_id = Day.objects.all().order_by('-id').first().id if Day.objects.all().exists() else 0
+        day_data = []
+
+        for i, image in enumerate(images_data, start=1):
+            day = Day.objects.create(
+                id=last_day_id + i, 
+                guard=guards, 
+                day=i, 
+                person_id=guard_data[i - 1]["id"], 
+                stop_points=guard_data[i - 1]["stop_points"], 
+                songs=guard_data[i - 1]["songs"]
+            )
+            filename = "fence_{i}.png".format(i=i)
+            day.image.save(filename, ContentFile(image))
+            day_data.append({
+                "day_id": day.id,
+                "person_id": day.person_id,
+                "stop_points": day.stop_points,
+                "songs": day.songs,
+                "image": day.image.url if day.image else None,
+            })
+
+        return JsonResponse(day_data, safe=False)

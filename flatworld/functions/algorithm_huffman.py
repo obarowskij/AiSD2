@@ -1,6 +1,5 @@
 def code_song(text):
     # kodowanie
-
     length = len(text)
     frequency = {}
 
@@ -34,5 +33,4 @@ def code_song(text):
                     uncoded_text = "".join([uncoded_text, key])
                     extract = ""
                     break
-
     return code, coded_text, uncoded_text

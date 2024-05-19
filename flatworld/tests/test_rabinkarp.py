@@ -18,5 +18,5 @@ from flatworld.functions.algorithm_rabinkarp import rabinkarp
     ],
 )
 def test_rabinkarp(text, pattern, expected):
-    indexes, _, _, _ = rabinkarp(text, pattern)
+    indexes, _, _, _ = rabinkarp(pattern, text)
     assert indexes == expected

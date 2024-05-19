@@ -50,13 +50,13 @@ let custom = false;
 function generateWorld(){
     let inputPoints;
     if (small) {
-        inputPoints = Math.floor(Math.random() * (20 - 3 + 1)) + 3;
+        inputPoints = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
     }
     if (medium) {
-        inputPoints = Math.floor(Math.random() * (50 - 20 + 1)) + 20;
+        inputPoints = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
     }
     if (big) {
-        inputPoints = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+        inputPoints = Math.floor(Math.random() * (50 - 20 + 1)) + 20;
     }
     if (custom) {
         inputPoints = document.getElementById('inputPoints').value;

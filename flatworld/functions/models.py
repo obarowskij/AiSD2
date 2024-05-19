@@ -52,3 +52,14 @@ class inhabitants:
             "personality": self.personality,
             "direction": self.direction,
         }
+
+
+class Guard:
+    def __init__(self, id, energy, max_steps):
+        self.id = id
+        self.energy = energy
+        self.patrol_day = 0
+        self.max_steps = max_steps
+
+    def set_patrol_day(self, day):
+        self.patrol_day = day

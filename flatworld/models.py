@@ -56,5 +56,15 @@ class Guard(models.Model):
     adventure = models.ForeignKey(
         Adventure, on_delete=models.CASCADE, related_name="guard"
     )
-    guards = models.JSONField(null=True, blank=True)
-    schedule = models.JSONField(null=True, blank=True)
+    steps = models.IntegerField(null=True)
+
+
+class Day(models.Model):
+    guard = models.ForeignKey(
+        Guard, on_delete=models.CASCADE, related_name="days"
+    )
+    day = models.IntegerField(null=True, blank=True)
+    person_id = models.IntegerField(null=True, blank=True)
+    stop_points = models.JSONField(null=True, blank=True)
+    songs = models.JSONField(null=True, blank=True)
+    image = models.ImageField(upload_to="images/", default="")

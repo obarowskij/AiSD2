@@ -12,20 +12,26 @@ def naive_check(word1, word2):
     return word1 == word2
 
 
+# O(n + m)
 def rabinkarp(pattern, sentence):
     splitted = sentence.split("\n")
     p = 89
     changed_list = []
+    indexes = []
+    word_indexes = []
+    word_counter = 0
+    new_song = ""
+    licznik = 0
+
     for _ in pattern:
         changed_list.append(chr(random.randint(33, 127)))
     to_change = "".join(changed_list)
+
     for i in range(len(splitted)):
         corrected = splitted[i].strip()
         splitted[i] = corrected
     splitted.pop()
-    indexes = []
-    new_song = ""
-    licznik = 0
+    #
     for line in splitted:
         new_line = ""
         hs = horner(pattern, p)
@@ -42,9 +48,7 @@ def rabinkarp(pattern, sentence):
                             new_line[:i] + to_change + line[i + len(pattern) :]
                         )
             licznik += 1
-
-    word_indexes = []
-    word_counter = 0
+    #
     for line in splitted:
         words = line.split()
         for i in range(len(words)):
@@ -53,5 +57,5 @@ def rabinkarp(pattern, sentence):
                 words[i] = to_change
             word_counter += 1
         new_song += " ".join(words) + "\n"
-    print(indexes)
+
     return indexes, new_song, word_indexes, to_change
