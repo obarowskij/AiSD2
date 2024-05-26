@@ -64,6 +64,8 @@ class ResetView(APIView):
     def post(self, request):
         try:
             adventure = Adventure.objects.get(id=1)
+            fence  = Fence.objects.get(id=1)
+            days = Day.objects.all()
 
             if adventure.world and default_storage.exists(
                 adventure.world.name
@@ -72,15 +74,21 @@ class ResetView(APIView):
                 adventure.world = None
                 adventure.save()
 
-            if adventure.fence:
-                for fence in adventure.fence.all():
-                    if fence.fence:
-                        if default_storage.exists(fence.fence.name):
-                            default_storage.delete(fence.fence.name)
-                        fence.fence = None
-                        fence.save()
+            if fence.fence:
+                if fence.fence:
+                    if default_storage.exists(fence.fence.name):
+                        default_storage.delete(fence.fence.name)
+                    fence.fence = None
+                    fence.save()
 
                 adventure.fence.set([])
+            for day in days:
+                if day.image:
+                    if default_storage.exists(day.image.name):
+                        default_storage.delete(day.image.name)
+                    day.image = None
+                    day.save()
+                day.delete()
 
             adventure.delete()
             return Response({"message": "Przygoda została zresetowana."})
