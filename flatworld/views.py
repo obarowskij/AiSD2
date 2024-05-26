@@ -388,6 +388,8 @@ class FenceView(APIView):
 class GuardsView(APIView):
     def get(self, request):
         try:
+            if not Inhabitant.objects.get(id=1).inhabitants or not Fence.objects.get(id=1).fence:
+                return render(request, "flatworld/error.html")
             return render(
                 request,
                 "flatworld/guards.html",
@@ -396,7 +398,7 @@ class GuardsView(APIView):
                     "days": Day.objects.all(),
                 },
             )
-        except Adventure.DoesNotExist:
+        except (Adventure.DoesNotExist, Inhabitant.DoesNotExist, Fence.DoesNotExist):
             return render(request, "flatworld/error.html")
 
     def post(self, request):

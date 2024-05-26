@@ -20,5 +20,5 @@ urlpatterns = [
     path("fence/", views.FenceView.as_view(), name="fence"),
     path("song/", views.SongView.as_view(), name="song"),
     path("coding/", views.CodingView.as_view(), name="coding"),
-    path("guards/", views.GuardsView.as_view(), name="Guards"),
+    path("guards/", views.GuardsView.as_view(), name="guards"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

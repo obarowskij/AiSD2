@@ -2,7 +2,7 @@ from random import randint
 from .models import Guard, Point
 import matplotlib.pyplot as plt
 import matplotlib
-matplotlib.use('TkAgg')
+matplotlib.use('Agg')
 import io
 
 
@@ -69,7 +69,7 @@ def generate_flat_schedule(people, hull_points_number, max_steps, hull_points):
     ]
     sorted_guards = sorted(guards, key=lambda x: x.energy, reverse=True)
     # jak nie bedzie tych 7 straznikow to nie bedzie mial kto tam patrolowac brak danych jakis case dorobic
-    chosen_guards = [guard for guard in sorted_guards if guard.energy > 50][:7]
+    chosen_guards = [guard for guard in sorted_guards][:7] # if guard.energy > 50
     guard_data = []
     for day, guard in enumerate(chosen_guards, start=1):
         guard.set_patrol_day(day)

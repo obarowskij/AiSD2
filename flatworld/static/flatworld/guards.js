@@ -21,6 +21,10 @@ function schedule(){
     })
     .then(response => { return response.json(); })
     .then(data => {
+        window.location.href = './';
+    });
+    /*.then(response => { return response.json(); })
+    .then(data => {
         data.forEach((day, index) => {  
             let pageFlexElement = document.createElement('div');
             let page = document.createElement('div');
@@ -45,8 +49,11 @@ function schedule(){
 
             pageFlexElement.appendChild(dividedPageElement1);
             pageFlexElement.appendChild(dividedPageElement2);
-
-            document.body.appendChild(pageFlexElement);
+            
+            page.appendChild(pageFlexElement);
+        document.body.appendChild(page);
+        document.getElementById('generateGuards').remove();
+        document.getElementById('inputPoints').remove();
         });
-    });
+    });*/
 }
