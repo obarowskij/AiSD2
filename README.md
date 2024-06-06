@@ -1,11 +1,10 @@
 
-# Zespół nr: 1
+## Zespół nr: 1
 Skład zespołu wraz z funkcjami:<br />
 
 Dorota Harasimiuk - sekretarz<br />
 Jakub Obarowski – przywódca<br />
 Marcel Tutak - zastępca<br /><br />
-
 # role
 koordynator - Jakub Obarowski, Dorota Harasimiuk<br />
 programista - cały zespół<br />
@@ -52,7 +51,7 @@ pytest
 | 7.  | Dane: Lista strażników <br /> Wynik: Harmonogram pracy strażników ustawiany według minimalnej liczby odsłuchań melodii w trakcie pracy | Potrzeba ochrony płotu | ----------- | ----------- | Tutak |
 
 # Harmonogram realizacji
-![Bez tytułu](https://github.com/obarowskij/AiSD2/assets/146991219/c3907114-ce10-45a8-899f-a0694477bbb2)
+![Bez tytułu](https://github.com/obarowskij/AiSD2/assets/146991219/bb26fd3f-be72-4b67-aa0e-08641c8d0f4f)
 
 # Ogólny opis
 Nasz projekt Flatworld to historia - zasiadasz, odpalasz aplikację webową i stopniowo tworzysz świat, w którym żyją płaszczaki.
