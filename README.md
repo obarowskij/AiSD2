@@ -43,7 +43,8 @@ Serwer uruchomi się domyślnie pod adresem http://127.0.0.1:8000
 pytest
 ```
 # Harmonogram realizacji
-![Bez tytułu](https://github.com/obarowskij/AiSD2/assets/146991219/bb26fd3f-be72-4b67-aa0e-08641c8d0f4f)
+![obraz](https://github.com/obarowskij/AiSD2/assets/146991219/fd599c54-ca0b-496d-9471-f48bb7a9612b)
+
 
 # Dokumentacja
 | L.p | Specyfikacja problemu (dane i wyniki) | Do jakich treści w zadaniu odnosi się algorytm | Zastosowane struktury danych | Informacje o zastosowanym algorytmie | Osoba realizująca |
