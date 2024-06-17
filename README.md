@@ -54,7 +54,7 @@ pytest
 | 3.  | Dane: Otoczka wypukła Krainy oraz lista tragarzy gotowych do współpracy<br /> Wynik: Minimalny koszt zbudowania płotu wokół Krainy | Zbudowanie płotu wokół Krainy | kolejka | Djikstra + prosty wzór na koszt | Obarowski |
 | 4.  | Dane: Ciąg znaków (opowieść-melodia) i słowo które zostało w niej zmienione <br /> Wynik: Indeksy podmienionego słowa w piosence | Znalezienie oryginalnej melodii | Lista | Algorytm Rabina-Karpa | Obarowski |
 | 5.  | Dane: Ciąg znaków a1a2...an reprezentujący opowieść-melodię<br /> Wynik: kodowanie dla ciągu znaków, umożliwiające kompresję danych | Problem niewystarczającej ilości pamięci na komputerze informatyka płaszczaka | słowniki, 'drzewo' | Huffman | Obarowski |
-| 6.  | Dane: Lista strażników i lista punktów obserwacyjnych <br /> Wynik: Harmonogram pracy strażników ustawiany według minimalnej liczby odsłuchań melodii w trakcie pracy | Potrzeba ochrony płotu | ----------- | RMQ | Tutak |
+| 6.  | Dane: Lista strażników i lista punktów obserwacyjnych <br /> Wynik: Harmonogram pracy strażników ustawiany według minimalnej liczby odsłuchań melodii w trakcie pracy | Potrzeba ochrony płotu | kolejka, słownik | Algorytm zachłanny | Tutak |
 
 # Algorytm Grahama
 ### 1.Kroki algorytmu:
@@ -66,7 +66,7 @@ Złożoność czasowa algorytmu Grahama wynosi O(nlogn), gdzie n to liczba punkt
 ### 3.Niezmiennik
 Niezmiennikiem w algorytmie Grahama jest fakt, że w każdej iteracji stos zawiera sekwencję punktów tworzących część otoczki wypukłej. Innymi słowy, każdy punkt na stosie jest częścią otoczki wypukłej dla punktów przetworzonych do tej pory. Dzięki temu możemy być pewni, że po przetworzeniu wszystkich punktów stos będzie zawierał pełną otoczkę wypukłą.
 
-# Algorytm KMP
+# Algorytm Rabin-Karp
 ### 1.Kroki algorytmu:
 1. Preprocessing: Pierwszym krokiem algorytmu jest przetwarzanie wzorca (pattern), aby utworzyć tablicę częściowych dopasowań (partial match table). Dla każdej pozycji w wzorcu, tablica ta zawiera informacje o najdłuższym prefiksie wzorca, który jest zarówno sufiksem, jak i podciągiem tego prefiksu.</br>
 2. Wyszukiwanie: Główny krok algorytmu polega na przesuwaniu wzorca względem tekstu (text) i porównywaniu go z tekstem, aż do znalezienia dopasowania lub zakończenia przeszukiwania. W przypadku niezgodności, algorytm wykorzystuje tablicę częściowych dopasowań, aby określić, gdzie należy przesunąć wzorzec.
