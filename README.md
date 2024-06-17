@@ -11,41 +11,57 @@ programista - cały zespół<br />
 strona graficzna - Dorota Harasimiuk<br />
 tester - cały zespół<br />
 autor dokumentacji - Dorota Harasimiuk<br />
+### Spis treści
+- [Ogólny opis](#1)
+- [Wystartowanie projektu](#2)
+- [Testy](#3)
+- [Harmonogram](#4)
+- [Dokumentacja](#5)
+- [Opis algorytmów](#6)
+- [Technologie](#7)
 
+  
+<a id='1'></a>
 # Ogólny opis
 Nasz projekt Flatworld to historia - zasiadasz, odpalasz aplikację webową i stopniowo tworzysz świat, w którym żyją płaszczaki.
 # FlatWorld
 ![kraina](https://github.com/obarowskij/AiSD/assets/146991219/70d9dfba-e964-468b-bb6d-59a82b36d572)
-
+<a id='2'></a>
 # Wystartowanie projektu
-
 ### Krok 1.
+Stworzenie środowiska wirtualnego
+```bash
+  python -m venv venv
+  venv\Script\activate
+```
+### Krok 2.
 pobranie paczki requirements
 ```bash
-pip install -r requirements.txt
-```
-
-### Krok 2.
-Migracje
-```bash
-python manage.py migrate
+  pip install -r requirements.txt
 ```
 
 ### Krok 3.
+Migracje
+```bash
+  python manage.py migrate
+```
+
+### Krok 4.
 Uruchomienie aplikacji
 ```bash
-python manage.py runserver
+  python manage.py runserver
 ```
 Serwer uruchomi się domyślnie pod adresem http://127.0.0.1:8000
-
+<a id='3'></a>
 ### Uruchomienie Testów
 ```bash
 pytest
 ```
+<a id='4'></a>
 # Harmonogram realizacji
 ![obraz](https://github.com/obarowskij/AiSD2/assets/146991219/fd599c54-ca0b-496d-9471-f48bb7a9612b)
 
-
+<a id='5'></a>
 # Dokumentacja
 | L.p | Specyfikacja problemu (dane i wyniki) | Do jakich treści w zadaniu odnosi się algorytm | Zastosowane struktury danych | Informacje o zastosowanym algorytmie | Osoba realizująca |
 | --- | -------------------------------------- | --------------------------------------------- | ---------------------------- | ----------------------------------- | ------------------ |
@@ -55,7 +71,7 @@ pytest
 | 4.  | Dane: Ciąg znaków (opowieść-melodia) i słowo które zostało w niej zmienione <br /> Wynik: Indeksy podmienionego słowa w piosence | Znalezienie oryginalnej melodii | Lista | Algorytm Rabina-Karpa | Obarowski |
 | 5.  | Dane: Ciąg znaków a1a2...an reprezentujący opowieść-melodię<br /> Wynik: kodowanie dla ciągu znaków, umożliwiające kompresję danych | Problem niewystarczającej ilości pamięci na komputerze informatyka płaszczaka | słowniki, 'drzewo' | Huffman | Obarowski |
 | 6.  | Dane: Lista strażników i lista punktów obserwacyjnych <br /> Wynik: Harmonogram pracy strażników ustawiany według minimalnej liczby odsłuchań melodii w trakcie pracy | Potrzeba ochrony płotu | kolejka, słownik | Algorytm zachłanny | Tutak |
-
+<a id='6'></a>
 # Algorytm Grahama
 ### 1.Kroki algorytmu:
 1. Znajdowanie punktu początkowego: Wybierany jest punkt o najmniejszej współrzędnej y (a w przypadku remisu, punkt o najmniejszej współrzędnej x).</br>
@@ -100,7 +116,7 @@ todo
 Złożoność czasowa algorytmu 
 ### 3.Niezmiennik
 POPRAWNOSC FORMALNA TO TRZEBA DAC OPISY NP CZEMU PETLE SIE KONCZA EWENTUALNIE JAKI JEST NIEZMIENNIK
-
+<a id='7'></a>
 # Wykorzystane technologie
 Python, Django, JS
 
