@@ -85,7 +85,6 @@ def calculate_cost(hull_points, world_points, pairs, neighbors):
     graph.add_node(Node('factory'))
     for i in range(1,len(world_points)+1):
         graph.add_node(Node(str(i)))
-    print(neighbors)
     for elem in neighbors:
         graph.add_edge(Edge(graph.Nodes[int(elem[0])], graph.Nodes[int(elem[1])], elem[2], 99999))
     try:

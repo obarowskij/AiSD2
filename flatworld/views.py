@@ -347,10 +347,12 @@ class FenceView(APIView):
                 world_points = adventure.world_points
                 hull_points = adventure.hull_points
                 pairs = inhabitants.bearers
-                neighbors = fence.fence_neighbors
+                neighbors = fence.neighbors_matrix
                 cost = calculate_cost(
                     hull_points, world_points, pairs, neighbors
                 )
+                fence.fence_cost = cost
+                fence.save()
                 return JsonResponse({"cost": cost})
 
             else:

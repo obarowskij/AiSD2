@@ -30,7 +30,6 @@ def rabinkarp(pattern, sentence):
     for i in range(len(splitted)):
         corrected = splitted[i].strip()
         splitted[i] = corrected
-    splitted.pop()
     #
     for line in splitted:
         new_line = ""
@@ -57,5 +56,6 @@ def rabinkarp(pattern, sentence):
                 words[i] = to_change
             word_counter += 1
         new_song += " ".join(words) + "\n"
-
     return indexes, new_song, word_indexes, to_change
+
+
