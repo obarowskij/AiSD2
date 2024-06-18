@@ -102,11 +102,12 @@ Złożoność czasowa budowy drzewa Huffmana wynosi O(nlogn), gdzie n to liczba 
 Niezmiennikiem algorytmu Huffmana jest fakt, że drzewo Huffmana zawsze zachowuje własność optymalnej kodowania, czyli sumaryczna długość kodów dla wszystkich symboli jest minimalna. Ta własność jest zachowywana podczas budowy drzewa oraz przypisywania kodów, co zapewnia optymalność uzyskanego kodu Huffmana.
 
 # Algorytm Dijkstra
-todo
 ### 1.Kroki algorytmu:
-1. 
+1. Stworzenie grafu na podstawie macierzy
+2. Dodanie krawędzi do grafu
+3. 
 ### 2.Złożoność obliczeniowa
-Złożoność czasowa algorytmu 
+Główna pętla algorytmu ma złożoność O(V), gdzie V to liczba węzłów. Dla każdego węzła sprawdzane są wszystkie jego krawędzie, co w najgorszym przypadku zajm,uje O(E), gdzie E to liczba krawędzi w grafie. Operacje na kolejce priorytetowej zajmują O(log V) czasu co daje łączną złożoność O((V+E)logV)
 ### 3.Niezmiennik
 
 # Algorytm RMQ
