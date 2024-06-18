@@ -160,7 +160,7 @@ class GenerateWorldView(APIView):
         filename = "plot_{}.png".format(int(time.time()))
         adventure.world.save(filename, File(hull))
         world_url = adventure.world.url
-        return JsonResponse({"world_url": world_url})
+        return JsonResponse({"world_url": world_url, "hull_points": len(hull_points)-1})
 
 
 class SongView(APIView):

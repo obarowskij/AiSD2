@@ -73,19 +73,19 @@ function generateWorld(){
     .then(image => {
         const img = document.createElement('img'); 
         img.src = image.world_url;
+        const hullPoints = image.hull_points;
         const pageElement = document.querySelector('.page');
         img.style.width = '800px';
         pageElement.appendChild(img); 
         img.onload = () => console.log('Image loaded');
         img.onerror = () => console.log('Image load error');
-
         document.getElementById('generateSmallWorld').remove();
         document.getElementById('generateMediumWorld').remove();
         document.getElementById('generateBigWorld').remove();
         document.getElementById('inputPoints').remove();
         document.getElementById('customWorld').remove();
         document.getElementById('inputPointsGenerated2').remove();
-        document.getElementById('inputPointsGenerated1').innerHTML = 'Kraina zostala wygenerowana z ' + inputPoints + ' punktow';
+        document.getElementById('inputPointsGenerated1').innerHTML = 'Kraina zostala wygenerowana z <span style="color:green;">' + inputPoints + '</span> punktow. <br/> Otoczka składa się z <span style="color:green;">' + hullPoints + '</span> punktów.';
         const div = document.createElement('div');
         const h3 = document.createElement('h3');
         const button = document.createElement('button');
