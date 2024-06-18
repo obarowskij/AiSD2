@@ -6,7 +6,7 @@ Jakub Obarowski - przywódca<br />
 Dorota Harasimiuk - sekretarz<br />
 Marcel Tutak - zastępca<br /><br />
 ### Role:
-kierownik - Jakub Obarowski
+kierownik - Jakub Obarowski<br />
 koordynator - Dorota Harasimiuk<br />
 programista - cały zespół<br />
 strona graficzna - Dorota Harasimiuk<br />
