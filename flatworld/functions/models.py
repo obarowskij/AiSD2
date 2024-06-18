@@ -1,7 +1,6 @@
 from collections import deque
 from random import randint
 
-
 class Stack:
     def __init__(self):
         self.items = deque()
@@ -104,3 +103,30 @@ class Graf:
     def add_edge(self,Edge):
         self.Edges.append(Edge)
         self.max_value += Edge.flow
+
+class SegmentTree:
+    def __init__(self, data):
+        self.n = len(data)
+        self.tree = [0] * (2 * self.n)
+        self.build(data)
+
+    def build(self, data):
+        for i in range(self.n):
+            self.tree[self.n + i] = data[i]
+        for i in range(self.n - 1, 0, -1):
+            self.tree[i] = min(self.tree[i * 2], self.tree[i * 2 + 1])
+
+    def range_min_query(self, left, right):
+        left += self.n
+        right += self.n
+        min_value = float('inf')
+        while left < right:
+            if left % 2:
+                min_value = min(min_value, self.tree[left])
+                left += 1
+            if right % 2:
+                right -= 1
+                min_value = min(min_value, self.tree[right])
+            left //= 2
+            right //= 2
+        return min_value
