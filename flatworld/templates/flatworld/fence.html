@@ -6,7 +6,7 @@
     <div class = "page">
         {% if fence_cost %}
             <h1> Gratulacje! Płotek został zbudowany! </h1>
-            <h2> Koszt budowy: <span class="green-text"> {{ fence.cost }}</span> zł </h2>
+            <h2> Koszt budowy: <span class="green-text"> {{ fence_cost }}</span> zł </h2>
         {% else %}
             <h1> Płotek wkrótce stanie się faktem! </h1>
             <div class="pageFlex">
@@ -38,5 +38,5 @@
 {% endblock %}
 
 {% block script %}
-<script src="{% static 'flatworld/fence.js' %}" type="module"></script>
+    <script src="{% static 'flatworld/fence.js' %}" type="module"></script>
 {% endblock %}

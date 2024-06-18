@@ -22,7 +22,6 @@ import time
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from rest_framework import status
-from rest_framework.exceptions import APIException
 from django.core import serializers
 
 
@@ -64,8 +63,13 @@ class ResetView(APIView):
     def post(self, request):
         try:
             adventure = Adventure.objects.get(id=1)
-            fence  = Fence.objects.get(id=1)
+            try:
+                fence = Fence.objects.get(id=1)
+            except Fence.DoesNotExist:
+                fence = None
             days = Day.objects.all()
+            if not days.exists():
+                days = None
 
             if adventure.world and default_storage.exists(
                 adventure.world.name
@@ -74,26 +78,29 @@ class ResetView(APIView):
                 adventure.world = None
                 adventure.save()
 
-            if fence.fence:
-                if fence.fence:
-                    if default_storage.exists(fence.fence.name):
-                        default_storage.delete(fence.fence.name)
-                    fence.fence = None
-                    fence.save()
+            if fence and fence.fence:
+                if default_storage.exists(fence.fence.name):
+                    default_storage.delete(fence.fence.name)
+                fence.fence = None
+                fence.save()
 
                 adventure.fence.set([])
-            for day in days:
-                if day.image:
-                    if default_storage.exists(day.image.name):
-                        default_storage.delete(day.image.name)
-                    day.image = None
-                    day.save()
-                day.delete()
 
+            if days:
+                for day in days:
+                    if day.image:
+                        if default_storage.exists(day.image.name):
+                            default_storage.delete(day.image.name)
+                        day.image = None
+                        day.save()
+                    day.delete()
             adventure.delete()
             return Response({"message": "Przygoda została zresetowana."})
         except Adventure.DoesNotExist:
-            return Response({"message": "No adventure to reset."})
+            pass
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
+                
 
     def get(self, request):
         adventure_exists = Adventure.objects.filter(id=1).exists()
@@ -353,6 +360,7 @@ class FenceView(APIView):
                 )
                 fence.fence_cost = cost
                 fence.save()
+                print(cost)
                 return JsonResponse({"cost": cost})
 
             else:

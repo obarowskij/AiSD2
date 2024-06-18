@@ -44,3 +44,4 @@ sympy==1.12
 tzdata==2023.3
 urllib3==2.2.1
 Werkzeug==3.0.2
+pytest==8.2.2

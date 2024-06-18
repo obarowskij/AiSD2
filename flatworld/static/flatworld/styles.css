@@ -105,12 +105,13 @@ body {
     border: none;
     border-radius: 4px;
     font-size: 1em; 
-    transition: background-color 0.3s ease, color 0.3s ease; 
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
     background-color: #4f5357; 
-    color: #fff
+    color: #fff;
+    transform: scale(1.15);
 }
 
 #inputPoints {
@@ -166,4 +167,13 @@ table th, table td {
   font-size: 16px;
   background-color: #f8f8f8;
   transition: background-color 0.3s ease;
+}
+
+#animate {
+  transition: transform 0.3s ease;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+#animate:hover {
+  transform: scale(1.1); /* Dodano efekt powiększenia przy najechaniu kursorem */
 }

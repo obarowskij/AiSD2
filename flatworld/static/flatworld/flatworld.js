@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
 function popup(event) {
     event.preventDefault();
     fetch('/reset', {

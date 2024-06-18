@@ -1,8 +1,10 @@
-import {getCookie} from './flatworld.js';
 import {createPopup} from './flatworld.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('generateFence').addEventListener('click', fence);
+    let generateFence = document.getElementById('generateFence'); 
+    if (generateFence){
+        generateFence.addEventListener('click', fence);
+    }
     let seeNeighbors = this.getElementById('showTable');
     if(seeNeighbors){
         seeNeighbors.addEventListener('click', neighbors);
@@ -17,15 +19,21 @@ function fence(){
 
     url.search = params.toString();
 
+    console.log("URL: ", url); // log the URL
+
     fetch(url)
     .then(response => response.json())
-    .then(data =>{
-        
-
+      .then(data => {
+        console.log(data.cost);
+        let h3 = document.createElement('h3');
+        h3.innerHTML = "Koszt ogrodzenia: <span style='color:green;'>" + data.cost + "</span> zł";
+        let h1 = document.querySelector('h1');
+        h1.innerHTML = "Ogrodzenie zostało wygenerowane!";
+        let div = document.createElement('div');
+        div.appendChild(h3);
+        document.querySelector('.page').appendChild(div);
         document.getElementById('generateFence').remove();
-        
-    })
-    .catch(error => console.error('Error:', error));
+      })
 }
 
 
@@ -33,27 +41,22 @@ function neighbors(){
     let windowPopup, overlay;
     ({ windowPopup, overlay } = createPopup("Lista sąsiadów"));
     windowPopup.style.zIndex = 1001;
-    windowPopup.style.width = '100%'; // Increase the width of the popup to full width
-    windowPopup.style.maxWidth = '50%'; // Increase the maximum width to full width
-    windowPopup.style.display = 'flex'; // Add this line
-    windowPopup.style.justifyContent = 'center'; // Add this line
-    windowPopup.style.alignItems = 'center'; // Add this line
+    windowPopup.style.width = '100%'; 
+    windowPopup.style.maxWidth = '50%';
+    windowPopup.style.display = 'flex'; 
+    windowPopup.style.justifyContent = 'center'; 
+    windowPopup.style.alignItems = 'center'; 
 
-    // Get the table data
     let table = document.getElementById('neighborsTable').cloneNode(true);
 
-    // Make the table visible
     table.style.display = 'table';
 
-    // Add the table to the popup
     windowPopup.appendChild(table);
     document.body.appendChild(overlay);
 
     document.body.appendChild(windowPopup);
 
-    // Add click event to overlay
     overlay.addEventListener('click', function() {
-        // Remove the popup and overlay
         document.body.removeChild(windowPopup);
         document.body.removeChild(overlay);
     });
