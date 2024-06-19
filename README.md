@@ -90,7 +90,7 @@ Niezmiennikiem w algorytmie Grahama jest fakt, że w każdej iteracji stos zawie
 ### 2.Złożoność obliczeniowa
 Złożoność czasowa algorytmu KMP wynosiO(n+m), gdzie nn to długość tekstu, a m to długość wzorca. Jest to spowodowane przede wszystkim faktem, że preprocessing wzorca wymaga czasu liniowego, a samo wyszukiwanie wymaga tylko jednego przejścia przez cały tekst.
 ### 3.Niezmiennik
-Niezmiennikiem algorytmu KMP jest fakt, że w każdej iteracji wyszukiwania pozycja wzorca w tekście zawsze znajduje się na takiej pozycji, gdzie możliwe jest dopasowanie. To oznacza, że nie ma potrzeby cofania się w tekście podczas procesu wyszukiwania, ponieważ algorytm korzysta z informacji zawartych w tablicy częściowych dopasowań, aby przesuwać wzorzec na przód, jeśli wystąpi niezgodność.
+Niezmiennikiem algorytmu Rabina-Karpa jest fakt, że w każdej iteracji wyszukiwania pozycja wzorca w tekście zawsze znajduje się na takiej pozycji, gdzie możliwe jest dopasowanie. To oznacza, że nie ma potrzeby cofania się w tekście podczas procesu wyszukiwania, ponieważ algorytm korzysta z informacji zawartych w tablicy częściowych dopasowań, aby przesuwać wzorzec na przód, jeśli wystąpi niezgodność.
 
 # Algorytm Huffmana
 ### 1.Kroki algorytmu:
