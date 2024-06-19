@@ -83,6 +83,30 @@ Złożoność czasowa algorytmu Grahama wynosi O(nlogn), gdzie n to liczba punkt
 ### 3.Niezmiennik
 Niezmiennikiem w algorytmie Grahama jest fakt, że w każdej iteracji stos zawiera sekwencję punktów tworzących część otoczki wypukłej. Innymi słowy, każdy punkt na stosie jest częścią otoczki wypukłej dla punktów przetworzonych do tej pory. Dzięki temu możemy być pewni, że po przetworzeniu wszystkich punktów stos będzie zawierał pełną otoczkę wypukłą.
 
+Algorytm Tragarzy
+1.Kroki algorytmu:
+1. Inicjalizacja słowników do dopasowania. 
+2. Dla każdego płaszczaka przypisanie go do odpowiedniego klucza słownika (0 lub 1 osobowość). Każdy z tych kluczy jest mapowany na inny słownik z dwoma kluczami (0 lub 1 zwrot rąk).
+3. Utworzenie par - dopasowanie osób po takiej samej osobowości i przeciwnym zwrocie rąk
+2.Złożoność obliczeniowa
+Złożoność czasowa tego algorytmu wynosi O(nlogn), gdzie n to liczba osób. Iterowanie po każdej osobie i przypisanie jej do odpowiedniej kategorii ma złożoność O(n), a Iterowanie po osobowościach (2 osobowości) i dopasowywanie osób o różnych kierunkach ma złożoność O(n) w najgorszym przypadku, ponieważ każda osoba musi być przetworzona.
+3.Niezmiennik
+Niezmiennikiem w tym algorytmie jest fakt, że liczba płaszczaków jest stała i iterujemy przez ich listę raz lub to że każda osoba jest zawsze przypisana do odpowiedniej kategorii w słowniku zgodnie z jej osobowością i kierunkiem.
+
+Algorytm Fabryki
+1.Kroki algorytmu:
+1. Zainicjalizowanie punktu p1 jako pierwszego wierzchołka wielokąta (“najniższy” punkt)
+2. Dla każdego następnego wierzchołka p2, jeśli wszystkie podpunkty są spełnione:
+y punktu fabryki jest większe od min wartości y punktów p1 i p2
+Jeśli y punktu fabryki jest mniejsze lub równe max wartości y p1 i p2
+Jeśli x punktu fabryki jest mniejsze lub równe max wartości x p1 i p2
+	3. Liczymy x punktu przecięcia półprostej(linii od punktu w prawo)
+4. Jeśli x punktu fabryki jest mniejsze lub równe x punktu przecięcia półprostej lub p1.x = p2.x to punkt jest w środku wielokąta
+2.Złożoność obliczeniowa
+Złożoność czasowa tego algorytmu wynosi O(n), gdzie n to liczba wierzchołków wielokąta. Operacje porównujące wykonują się w czasie stałym.
+3.Niezmiennik
+Niezmiennikiem w tym algorytmie jest to, że zmienna inside zawsze poprawnie wskazuje, czy liczba przecięć półprostej wychodzącej z punktu w prawo z krawędziami wielokąta jest nieparzysta. W każdej iteracji pętli algorytm sprawdza, czy półprosta przecina krawędź wielokąta, a jeśli tak, to zmienia wartość zmiennej inside na przeciwną, zachowując niezmiennik poprawności działania algorytmu.
+
 # Algorytm Rabin-Karp
 ### 1.Kroki algorytmu:
 1. Pierwszym krokiem algorytmu jest obliczenie hasha wzorca.</br>
