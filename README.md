@@ -85,8 +85,8 @@ Niezmiennikiem w algorytmie Grahama jest fakt, że w każdej iteracji stos zawie
 
 # Algorytm Rabin-Karp
 ### 1.Kroki algorytmu:
-1. Preprocessing: Pierwszym krokiem algorytmu jest przetwarzanie wzorca (pattern), aby utworzyć tablicę częściowych dopasowań (partial match table). Dla każdej pozycji w wzorcu, tablica ta zawiera informacje o najdłuższym prefiksie wzorca, który jest zarówno sufiksem, jak i podciągiem tego prefiksu.</br>
-2. Wyszukiwanie: Główny krok algorytmu polega na przesuwaniu wzorca względem tekstu (text) i porównywaniu go z tekstem, aż do znalezienia dopasowania lub zakończenia przeszukiwania. W przypadku niezgodności, algorytm wykorzystuje tablicę częściowych dopasowań, aby określić, gdzie należy przesunąć wzorzec.
+1. Pierwszym krokiem algorytmu jest obliczenie hasha wzorca.</br>
+2. Główny krok algorytmu polega na przesuwaniu wzorca względem tekstu (text) i porównywaniu go z tekstem, aż do znalezienia dopasowania lub zakończenia przeszukiwania. W przypadku zgodności hashy wzorca oraz wycinka tekstu, wykorzystujemy algorytm naiwny w celu ich porównania.
 ### 2.Złożoność obliczeniowa
 Złożoność czasowa algorytmu KMP wynosiO(n+m), gdzie nn to długość tekstu, a m to długość wzorca. Jest to spowodowane przede wszystkim faktem, że preprocessing wzorca wymaga czasu liniowego, a samo wyszukiwanie wymaga tylko jednego przejścia przez cały tekst.
 ### 3.Niezmiennik
@@ -94,7 +94,7 @@ Niezmiennikiem algorytmu KMP jest fakt, że w każdej iteracji wyszukiwania pozy
 
 # Algorytm Huffmana
 ### 1.Kroki algorytmu:
-1. Budowa drzewa Huffmana: Pierwszym krokiem algorytmu jest budowa drzewa Huffmana na podstawie częstości występowania symboli w tekście (lub innych danych), gdzie symbole o niższej częstości występowania mają dłuższe kody, a te o wyższej częstości mają krótsze kody. Drzewo to jest binarne, z węzłami reprezentującymi symbole oraz ich częstości, a liśćmi reprezentującymi same symbole.</br>
+1. Budowa drzewa Huffmana: Pierwszym krokiem algorytmu jest budowa drzewa Huffmana na podstawie częstotliwości występowania symboli w tekście (lub innych danych), gdzie symbole o niższej częstotliwości występowania mają dłuższe kody, a te o wyższej częstotliwości mają krótsze kody. Drzewo to jest binarne, z węzłami reprezentującymi symbole oraz ich częstotliwości, a liśćmi reprezentującymi same symbole.</br>
 2. Przypisanie kodów: Następnie koduje się symbole na podstawie drzewa Huffmana, przypisując im kody binarne. Kody te są tworzone poprzez przypisanie 0 do każdej krawędzi wychodzącej w lewo z węzła i 1 do krawędzi wychodzącej w prawo. Kody są budowane poprzez przechodzenie od korzenia do liścia i zapisywanie sekwencji bitów na podstawie kierunków w drzewie.
 ### 2.Złożoność obliczeniowa
 Złożoność czasowa budowy drzewa Huffmana wynosi O(nlogn), gdzie n to liczba symboli. Jest to spowodowane przede wszystkim sortowaniem symboli według ich częstości oraz konstrukcją drzewa binarnego. Złożoność pamięciowa algorytmu jest również O(n)O(n).
@@ -105,11 +105,13 @@ Niezmiennikiem algorytmu Huffmana jest fakt, że drzewo Huffmana zawsze zachowuj
 ### 1.Kroki algorytmu:
 1. Stworzenie grafu na podstawie macierzy
 2. Dodanie krawędzi do grafu
-3. 
+3. Zainicjalizowanie kolejki priorytetowej i dodanie do niej wierzchołka startowego z odległościa równa 0.
+4. Pobranie wierzchołka z kolejki, który ma najmniejszą dotychczasową odległość, jeśli jest to wierzchołek docelowy, progam kończy działanie.
+5. Oblicznie nowej odległości jako suma dotychczasowej odległości do bieżącego wierzchołka i wagi krawędzi prowadzącej do sąsiada. Jeśli nowa odległość jest mniejsza niż dotychczasowa odległość do sąsiada, zaktualizowanie odległości oraz dodanie sąsiada do kolejki priorytetowej.
 ### 2.Złożoność obliczeniowa
 Główna pętla algorytmu ma złożoność O(V), gdzie V to liczba węzłów. Dla każdego węzła sprawdzane są wszystkie jego krawędzie, co w najgorszym przypadku zajm,uje O(E), gdzie E to liczba krawędzi w grafie. Operacje na kolejce priorytetowej zajmują O(log V) czasu co daje łączną złożoność O((V+E)logV)
 ### 3.Niezmiennik
-
+Niezmiennikami algorytmu Dijkstry sa fakty, że kolejka priorytetowa zawsze zawiera węzły, które zostały odkryte, ale jeszcze nie odwiedzone, wszystkie węzły w zbiorze visited mają swoje najkrótsze odległości od węzła start oraz to że słownik previous_nodes zawiera poprzedni węzeł dla każdego odwiedzonego węzła na najkrótszej ścieżce od węzła start.
 # Algorytm RMQ
 todo
 ### 1.Kroki algorytmu:
