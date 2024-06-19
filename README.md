@@ -113,13 +113,14 @@ Główna pętla algorytmu ma złożoność O(V), gdzie V to liczba węzłów. Dl
 ### 3.Niezmiennik
 Niezmiennikami algorytmu Dijkstry sa fakty, że kolejka priorytetowa zawsze zawiera węzły, które zostały odkryte, ale jeszcze nie odwiedzone, wszystkie węzły w zbiorze visited mają swoje najkrótsze odległości od węzła start oraz to że słownik previous_nodes zawiera poprzedni węzeł dla każdego odwiedzonego węzła na najkrótszej ścieżce od węzła start.
 # Algorytm RMQ
-todo
 ### 1.Kroki algorytmu:
-1. 
+1. Ustalenie 7 strażników według ich poziomu energii na każdy dzień tygodnia.
+2. Losowanie energii w danym dniu na każdym punkcie płotu oraz tworzenie i uzupelnianie drzewa przedziałowego nimi.
+3. Ustalanie na jakich punktach ma się zatrzymać strażnik tak, aby jak najmniej musiał odsłuchiwać melodii.
 ### 2.Złożoność obliczeniowa
-Złożoność czasowa algorytmu 
+Złożoność czasowa wyboru strażników to O(n log n), ponieważ mieszkańcy są posortowani względem energii i wybranych zostaje tylko 7. Każdy dzień jest inny, zatem energia w każdym punkcie też jest inna czyli O(n). Budowa drzewa przedziałowego z tych wylosowanych energii O(n). Ustalanie gdzie ma się zatrzymywać strażnik jest O(n log n).
 ### 3.Niezmiennik
-POPRAWNOSC FORMALNA TO TRZEBA DAC OPISY NP CZEMU PETLE SIE KONCZA EWENTUALNIE JAKI JEST NIEZMIENNIK
+Algorytm utrzymuje poprawność pozycji strażnika i, list stop_points i songs, gdzie i wskazuje ostatnią pozycję zatrzymania, a listy zawierają odpowiednie punkty zatrzymania i miejsca do grania melodii. Minimalna energia w przeszukiwanych przedziałach jest kluczowa dla decyzji o zatrzymaniu się strażnika. Lista strażników jest początkowo posortowana według energii, a wybrani strażnicy tworzą harmonogram zgodnie z oczekiwaniami algorytmu.
 <a id='7'></a>
 # Wykorzystane technologie
 Python, Django, JS
